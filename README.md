@@ -207,13 +207,14 @@ Now change the port number in Parsec:
 - Host PC, change the "Host Start Port" to 9000
 - Client PC, change "Client Port" to 9000
 
-Start connect and check the ping.</br>
+Start connect and check the ping.
+
 ---
 #### For Moonlight, you need to forward the following port:
 TCP 47984, 47989, 48010</br>
 UDP 47998, 47999, 48000, 48002, 48010</br>
 
-Simply use following command:
+- Simply use following command:
 ```
 sudo iptables -t nat -A PREROUTING -p tcp --dport 47984 -j DNAT --to-destination 100.64.0.3:47984
 sudo iptables -t nat -A PREROUTING -p tcp --dport 47989 -j DNAT --to-destination 100.64.0.3:47989
@@ -227,3 +228,4 @@ sudo iptables -t nat -A PREROUTING -p udp --dport 48010 -j DNAT --to-destination
 ```
 ---
 ~Good luck!
+---

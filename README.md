@@ -133,8 +133,8 @@ This is my result (I hide some information):
 100.64.0.4  // Client PC address
 ```
 
-Now, allow the VPS to run as Exit node in the [admin page](https://login.tailscale.com/admin/machines)
-From the Client PC, select the VPS as Exit node. THIS IS REQUIRED.
+Now, allow the VPS to run as Exit node in the [admin page](https://login.tailscale.com/admin/machines)</br>
+From the Client PC, select the VPS as Exit node. THIS IS REQUIRED.</br>
 Host PC don't need to select the Exit node.
 
 - Now check the connection status again:
@@ -187,8 +187,8 @@ sudo sysctl -p
 sudo iptables -t nat -A PREROUTING -p udp --dport 9000 -j DNAT --to-destination 100.64.0.3:9000
 ```
 
-In here, "udp" is the protocol. Some case it will be "tcp"
-"9000" is the port number
+In here, "udp" is the protocol. Some case it will be "tcp"</br>
+"9000" is the port number</br>
 "100.64.0.3" is the Host PC ip address used in Tailscale
 
 
@@ -206,5 +206,6 @@ Now change the port number in Parsec:
 - Host PC, change the "Host Start Port" to 9000
 - Client PC, change "Client Port" to 9000
 
-Start connect and check the ping.
+Start connect and check the ping.</br>
+---
 ~Good luck!

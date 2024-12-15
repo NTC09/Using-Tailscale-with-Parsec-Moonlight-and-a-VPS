@@ -4,6 +4,7 @@
 This guide will help you to:
 - Resolve 6023 error on Parsec.
 - Setup port forwarding in a VPS.
+- Setup Tailscale to work with Parsec and Moonlight.
 - Open port without modify router's config.
 
 When do you need/follow this guide:
@@ -207,5 +208,22 @@ Now change the port number in Parsec:
 - Client PC, change "Client Port" to 9000
 
 Start connect and check the ping.</br>
+---
+#### For Moonlight, you need to forward the following port:
+TCP 47984, 47989, 48010</br>
+UDP 47998, 47999, 48000, 48002, 48010</br>
+
+Simply use following command:
+```
+sudo iptables -t nat -A PREROUTING -p tcp --dport 47984 -j DNAT --to-destination 100.64.0.3:47984
+sudo iptables -t nat -A PREROUTING -p tcp --dport 47989 -j DNAT --to-destination 100.64.0.3:47989
+sudo iptables -t nat -A PREROUTING -p tcp --dport 48010 -j DNAT --to-destination 100.64.0.3:48010
+
+sudo iptables -t nat -A PREROUTING -p udp --dport 47998 -j DNAT --to-destination 100.64.0.3:47998
+sudo iptables -t nat -A PREROUTING -p udp --dport 47999 -j DNAT --to-destination 100.64.0.3:47999
+sudo iptables -t nat -A PREROUTING -p udp --dport 48000 -j DNAT --to-destination 100.64.0.3:48000
+sudo iptables -t nat -A PREROUTING -p udp --dport 48002 -j DNAT --to-destination 100.64.0.3:48002
+sudo iptables -t nat -A PREROUTING -p udp --dport 48010 -j DNAT --to-destination 100.64.0.3:48010
+```
 ---
 ~Good luck!

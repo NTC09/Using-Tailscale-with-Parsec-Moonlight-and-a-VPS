@@ -1,4 +1,5 @@
-## How to setup a VPS as relay server for using Tailscale with Parsec, Moonlight
+## How to setup Parsec, Moonlight using Tailscale
+## And use a VPS as relay server to reduce latency
 ---
 This guide will help you to:
 - Resolve 6023 error on Parsec.

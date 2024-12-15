@@ -15,6 +15,7 @@ When do you need/follow this guide:
 - You can PAY about 1-2$ per month for renting a VPS.
 
 This guide may work with Zerotier too.
+
 ---
 
 ## Installation

@@ -149,7 +149,7 @@ This is my result:
 ```
 
 This mean my phone (as Client PC) traffic now go through the VPS.
-
+---
 #### Setup port forwarding in VPS
 
 Install netfilter-persistent to save your config if VPS shutdown/ reboot:

@@ -185,6 +185,11 @@ sudo sysctl -p
 sudo iptables -t nat -A PREROUTING -p udp --dport 9000 -j DNAT --to-destination 100.64.0.3:9000
 ```
 
+In here, "udp" is the protocol. Some case it will be "tcp"
+"9000" is the port number
+"100.64.0.3" is the Host PC ip address used in Tailscale
+
+
 - Save and reload the config
 ```
 sudo netfilter-persistent save && sudo netfilter-persistent reload

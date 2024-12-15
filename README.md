@@ -90,32 +90,6 @@ sudo apt upgrade
 ```
 
 - [Install Tailscale for Linux](https://tailscale.com/kb/1031/install-linux)
-<!-- 
-- You may got this warning, do as follow before starting tailscale:
-
-Warning: IP forwarding is disabled, subnet routing/exit nodes will not work.
-
-```
-echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
-echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
-sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
-```
-
-Warning: UDP GRO forwarding is suboptimally configured on eth0, UDP forwarding throughput capability will increase with a configuration change.
-
-```
-NETDEV=$(ip -o route get 8.8.8.8 | cut -f 5 -d " ")
-sudo ethtool -K $NETDEV rx-udp-gro-forwarding on rx-gro-list off
-```
-```
-printf '#!/bin/sh\n\nethtool -K %s rx-udp-gro-forwarding on rx-gro-list off \n' "$(ip -o route get 8.8.8.8 | cut -f 5 -d " ")" | sudo tee /etc/networkd-dispatcher/routable.d/50-tailscale
-sudo chmod 755 /etc/networkd-dispatcher/routable.d/50-tailscale
-```
-```
-sudo /etc/networkd-dispatcher/routable.d/50-tailscale
-test $? -eq 0 || echo 'An error occurred.'
-``` -->
-
 - Start Tailscale:
 ```
 sudo tailscale up
@@ -212,6 +186,7 @@ Now change the port number in Parsec:
 
 Before start, you MUST change the IP address in the Parsec config file to the IP of the VPS.</br>
 For Moonlight, you MUST add new computer using the IP of the VPS.</br>
+In my case, it is 100.64.0.5
 
 Start connect and check the ping.
 

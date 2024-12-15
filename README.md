@@ -72,9 +72,9 @@ After done above steps, now you can connect to the host without any error. But y
 
 Test the ping of the VPS. In my case:
 ```
-*Host PC <-> Client PC = 100ms :(
-*Host PC <-> VPS       = 4ms
-*VPS     <-> Client PC = 4ms
+Host PC <-> Client PC = 100ms :(
+Host PC <-> VPS       = 4ms
+VPS     <-> Client PC = 4ms
 ```
 
 Now go to the VPS console:
@@ -86,5 +86,34 @@ sudo apt upgrade
 sudo apt upgrade
 ```
 
-- [Firstly, install Tailscale for Linux](https://tailscale.com/kb/1031/install-linux)
-- 
+- [Install Tailscale for Linux](https://tailscale.com/kb/1031/install-linux)
+
+
+- You may got this warning, do as follow before starting tailscale:
+
+Warning: IP forwarding is disabled, subnet routing/exit nodes will not work.
+
+```
+echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
+```
+
+Warning: UDP GRO forwarding is suboptimally configured on eth0, UDP forwarding throughput capability will increase with a configuration change.
+
+```
+NETDEV=$(ip -o route get 8.8.8.8 | cut -f 5 -d " ")
+sudo ethtool -K $NETDEV rx-udp-gro-forwarding on rx-gro-list off
+```
+```
+printf '#!/bin/sh\n\nethtool -K %s rx-udp-gro-forwarding on rx-gro-list off \n' "$(ip -o route get 8.8.8.8 | cut -f 5 -d " ")" | sudo tee /etc/networkd-dispatcher/routable.d/50-tailscale
+sudo chmod 755 /etc/networkd-dispatcher/routable.d/50-tailscale
+```
+sudo /etc/networkd-dispatcher/routable.d/50-tailscale
+test $? -eq 0 || echo 'An error occurred.'
+```
+
+- Start Tailscale:
+```
+sudo tailscale up --advertise-exit-node --accept-routes=true
+```

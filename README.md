@@ -55,7 +55,7 @@ The "value" is the Tailscale ip address of the host PC. Example:
 
 #### For Moonlight
 
-You just need to add new PC using the Tailscale ip address of the VPS.
+You just need to add new PC using the Tailscale ip address of the Host PC.
 
 ---
 
@@ -90,8 +90,7 @@ sudo apt upgrade
 ```
 
 - [Install Tailscale for Linux](https://tailscale.com/kb/1031/install-linux)
-
-
+<!-- 
 - You may got this warning, do as follow before starting tailscale:
 
 Warning: IP forwarding is disabled, subnet routing/exit nodes will not work.
@@ -115,7 +114,7 @@ sudo chmod 755 /etc/networkd-dispatcher/routable.d/50-tailscale
 ```
 sudo /etc/networkd-dispatcher/routable.d/50-tailscale
 test $? -eq 0 || echo 'An error occurred.'
-```
+``` -->
 
 - Start Tailscale:
 ```
@@ -129,22 +128,16 @@ sudo tailscale status
 
 This is my result (I hide some information):
 ```
-100.64.0.6      ubuntu              linux   idle; offers exit node
+100.64.0.5      ubuntu              linux   idle; offers exit node
 100.64.0.3      host-pc             windows -
-100.64.0.4      phone               android 
+100.64.0.4      phone               android -
 ```
-
+While:
 ```
-100.64.0.6  // This is my VPS address
+100.64.0.5  // This is my VPS address
 100.64.0.3  // Host PC address
 100.64.0.4  // Client PC address
 ```
-
-- Now check the connection status again:
-
-
-
-- This mean my phone (as Client PC) traffic now go through the VPS.
 
 ---
 #### Setup port forwarding in VPS
@@ -186,24 +179,6 @@ In here, "udp" is the protocol. Some case it will be "tcp"</br>
 "9000" is the port number</br>
 "100.64.0.3" is the Host PC ip address used in Tailscale
 
-
-- Save and reload the config
-```
-sudo netfilter-persistent save && sudo netfilter-persistent reload
-```
-- Check if rule exist:
-```
-sudo iptables-save
-```
-
----
-Now change the port number in Parsec:
-- Host PC, change the "Host Start Port" to 9000
-- Client PC, change "Client Port" to 9000
-
-Start connect and check the ping.
-
----
 #### For Moonlight, you need to forward the following port:
 TCP 47984, 47989, 48010</br>
 UDP 47998, 47999, 48000, 48002, 48010</br>
@@ -221,5 +196,24 @@ sudo iptables -t nat -A PREROUTING -p udp --dport 48002 -j DNAT --to-destination
 sudo iptables -t nat -A PREROUTING -p udp --dport 48010 -j DNAT --to-destination 100.64.0.3:48010
 ```
 ---
-~Good luck!
+- Save and reload the config
+```
+sudo netfilter-persistent save && sudo netfilter-persistent reload
+```
+- Check if rule exist:
+```
+sudo iptables-save
+```
+
 ---
+Now change the port number in Parsec:
+- Host PC, change the "Host Start Port" to 9000
+- Client PC, change "Client Port" to 9000
+
+Before start, you MUST change the IP address in the Parsec config file to the IP of the VPS.</br>
+For Moonlight, you MUST add new computer using the IP of the VPS.</br>
+
+Start connect and check the ping.
+
+---
+~Good luck!

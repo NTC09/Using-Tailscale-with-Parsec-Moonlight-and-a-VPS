@@ -85,7 +85,7 @@ Now go to the VPS console:
 - Update your VPS:
 
 ```
-sudo apt upgrade
+sudo apt update
 sudo apt upgrade
 ```
 

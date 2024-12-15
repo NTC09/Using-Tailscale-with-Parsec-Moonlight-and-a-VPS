@@ -125,7 +125,7 @@ sudo tailscale up --advertise-exit-node --accept-routes=true
 sudo tailscale status
 ```
 
-This is my result:
+This is my result (I hide some information):
 ```
 100.64.0.6  // This is my VPS address
 100.64.0.3  // Host PC address
@@ -144,11 +144,12 @@ sudo tailscale status
 This is my result:
 ```
 100.64.0.6      ubuntu              linux   idle; offers exit node
-100.64.0.3      predator            windows -
+100.64.0.3      host-pc             windows -
 100.64.0.4      phone               android active; direct, tx 61388 rx 69988
 ```
 
-This mean my phone (as Client PC) traffic now go through the VPS.
+- This mean my phone (as Client PC) traffic now go through the VPS.
+
 ---
 #### Setup port forwarding in VPS
 

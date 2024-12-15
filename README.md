@@ -102,7 +102,7 @@ sudo tailscale status
 
 This is my result (I hide some information):
 ```
-100.64.0.5      ubuntu              linux   idle; offers exit node
+100.64.0.5      ubuntu              linux -
 100.64.0.3      host-pc             windows -
 100.64.0.4      phone               android -
 ```

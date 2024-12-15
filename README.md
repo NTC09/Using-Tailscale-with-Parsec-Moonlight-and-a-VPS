@@ -126,11 +126,10 @@ sudo tailscale status
 ```
 
 This is my result:
-```
-100.64.0.6  // This is my VPS address
-100.64.0.3  // Host PC address
-100.64.0.4  // Client PC address
-```
+>100.64.0.6  // This is my VPS address</br>
+>100.64.0.3  // Host PC address</br>
+>100.64.0.4  // Client PC address</br>
+
 
 Now, allow the VPS to run as Exit node in the [admin page](https://login.tailscale.com/admin/machines)
 From the Client PC, select the VPS as Exit node. THIS IS REQUIRED.
@@ -142,11 +141,9 @@ sudo tailscale status
 ```
 
 This is my result:
-```
-100.64.0.6      ubuntu              linux   idle; offers exit node
-100.64.0.3      predator            windows -
-100.64.0.4      phone               android active; direct, tx 61388 rx 69988
-```
+>100.64.0.6      ubuntu              linux   idle; offers exit node</br>
+>100.64.0.3      predator            windows -</br>
+>100.64.0.4      phone               android active; direct, tx 61388 rx 69988</br>
 
 This mean my phone (as Client PC) traffic now go through the VPS.
 ---

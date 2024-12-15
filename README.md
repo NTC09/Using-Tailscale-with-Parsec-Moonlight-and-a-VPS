@@ -49,7 +49,7 @@ The "value" is the Tailscale ip address of the host PC. Example:
 
 3. Save the file and start Parsec.
 
-- NOTE that if you want to go back to normal Parsec connection without using Tailscale, you need to remve this config.
+- NOTE that if you want to go back to normal Parsec connection without using Tailscale, you need to remove this config.
 
 - From here, you can connect to the host PC with Parsec without 6023 error.
 

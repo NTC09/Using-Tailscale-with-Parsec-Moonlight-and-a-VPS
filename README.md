@@ -22,6 +22,7 @@ When do you need/follow this guide:
 - [Install Tailscale](https://tailscale.com/kb/1347/installation)
 - [Install Moonlight](https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide)
 - [Install Parsec](https://parsec.app/downloads)
+Install this on both your host and client pc.
 
 #### Now, you need to change to config file of Parsec on the host PC:
 1. Exit Parsec, this is required before change the json file.

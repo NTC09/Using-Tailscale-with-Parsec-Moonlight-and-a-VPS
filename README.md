@@ -202,8 +202,8 @@ sudo iptables-save
 
 ---
 Now change the port number in Parsec:
-- Host PC, change the [Host Start Port] to 9000
-- Client PC, change [Client Port] to 9000
+- Host PC, change the "Host Start Port" to 9000
+- Client PC, change "Client Port" to 9000
 
 Start connect and check the ping.
 ~Good luck!

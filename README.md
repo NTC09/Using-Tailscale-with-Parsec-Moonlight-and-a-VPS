@@ -14,6 +14,7 @@ When do you need/follow this guide:
 - You don't have the permission to config the network.
 - You can PAY about 1-2$ per month for renting a VPS.
 
+This guide may work with Zerotier too.
 ---
 
 ## Installation
@@ -67,6 +68,7 @@ After done above steps, now you can connect to the host without any error. But y
 #### Setup VPS
 
 - You must rent a VPS (or some provider can give you a free trial).
+- Your VPS must have a public IP address.
 - Choose the provider that place their server on your country/ city because this will give you the lowest ping.
 - Choose the lowest configuration because this don't need a high performance and this will save your money. In my case, I choose 1 CPU core, 1 GB of RAM, 100 Mbps with unlimited data usage.
 - Choose the Linux as Operating System. Ubuntu is recommended.

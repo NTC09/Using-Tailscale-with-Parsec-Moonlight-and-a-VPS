@@ -22,7 +22,7 @@ When do you need/follow this guide:
 
 - [Install Tailscale](https://tailscale.com/kb/1347/installation)
 - [Install Moonlight](https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide)
-- [Install Parsec](https://parsec.app/downloads)
+- [Install Parsec](https://parsec.app/downloads)</br>
 Install this on both your host and client pc.
 
 #### Now, you need to change to config file of Parsec on the host PC:
@@ -55,7 +55,7 @@ The "value" is the Tailscale ip address of the host PC. Example:
 
 #### For Moonlight
 
-You just need to add new PC using the Tailscale ip address.
+You just need to add new PC using the Tailscale ip address of the VPS.
 
 ---
 

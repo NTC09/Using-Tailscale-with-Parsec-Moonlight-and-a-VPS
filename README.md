@@ -148,6 +148,56 @@ This is my result:
 100.64.0.4      phone               android active; direct, tx 61388 rx 69988
 ```
 
-This mean my phone (as Client PC) traffic will go through the VPS.
+This mean my phone (as Client PC) traffic now go through the VPS.
 
 #### Setup port forwarding in VPS
+
+Install netfilter-persistent to save your config if VPS shutdown/ reboot:
+```
+sudo apt install netfilter-persistent -y
+```
+
+Install iptables-persistent
+```
+sudo apt install iptables-persistent
+sudo iptables-save > /etc/iptables/rules.v4
+```
+
+
+Enable port forward
+```
+sudo nano /etc/sysctl.conf
+```
+
+Remove # in this line
+```
+net.ipv4.ip_forward=1
+```
+Press Ctrl+O -> Enter to save then press Ctrl+X
+
+Apply
+```
+sudo sysctl -p
+```
+
+- Now forward a port to Host PC, in my case, I use port 9000:
+```
+sudo iptables -t nat -A PREROUTING -p udp --dport 9000 -j DNAT --to-destination 100.64.0.3:9000
+```
+
+- Save and reload the config
+```
+sudo netfilter-persistent save && sudo netfilter-persistent reload
+```
+- Check if rule exist:
+```
+sudo iptables-save
+```
+
+---
+Now change the port number in Parsec:
+- Host PC, change the [Host Start Port] to 9000
+- Client PC, change [Client Port] to 9000
+
+Start connect and check the ping.
+~Good luck!

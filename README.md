@@ -192,7 +192,7 @@ Now change the port number in Parsec:
 Before start, you MUST change the IP address in the Parsec config file to the IP of the VPS.</br>
 For Moonlight, you MUST add new computer using the IP of the VPS.</br>
 In my case, it is 100.64.0.5</br>
-Or you can try using the VPS public ipaddress, with this, Client PC don't have to install Tailscale
+Or you can try using the VPS public ip address, with this, Client PC don't have to install Tailscale
 
 Start connect and check the ping.
 

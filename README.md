@@ -61,7 +61,9 @@ You just need to add new PC using the Tailscale ip address of the Host PC.
 
 ---
 
-After done above steps, now you can connect to the host without any error. But you may face the high latency problem. Now, it's time to setup the VPS as relay server to reduce the latency.
+From here, both Client and Host must connect to Tailscale.</br>
+After done above steps, now you can connect to the host without any error but you may face the high latency problem.</br>
+Now, it's time to setup the VPS as relay server to reduce the latency.
 
 ---
 
@@ -189,7 +191,8 @@ Now change the port number in Parsec:
 
 Before start, you MUST change the IP address in the Parsec config file to the IP of the VPS.</br>
 For Moonlight, you MUST add new computer using the IP of the VPS.</br>
-In my case, it is 100.64.0.5
+In my case, it is 100.64.0.5</br>
+Or you can try using the VPS public ipaddress, with this, Client PC don't have to install Tailscale
 
 Start connect and check the ping.
 
